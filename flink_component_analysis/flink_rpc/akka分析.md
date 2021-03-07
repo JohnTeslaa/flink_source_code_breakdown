@@ -18,7 +18,18 @@ https://www.cnblogs.com/lushilin/p/11239908.html
 ## FencedRpcEndpoint原理
 给RpcEndpint增加了一个fencing-token，这是一个连续增长的整数(fencing-token的本意)，FencedRpcEndpoint只处理那些**附带的fencing-token跟自己的fencing-token一样的消息**，这个功能明确地指定**让某个actor处理某个消息**。
 
-## FencedMainThreadExecutable
+## MainThreadExecutable 
+在主线程中，执行RPC endpoint的Runnable和Callable：
+    void runAsync(Runnable runnable);
+    <V> CompletableFuture<V> callAsync(Callable<V> callable, Time callTimeout);
+    void scheduleRunAsync(Runnable runnable, long delay);
+
+## FencedMainThreadExecutable extends MainThreadExecutable
+除了MainThreadExecutable的几个方法，还有两个自己的方法：
+    void runAsyncWithoutFencing(Runnable runnable); 
+    <V> CompletableFuture<V> callAsyncWithoutFencing(Callable<V> callable, Time timeout);
+
+
 
 
 
