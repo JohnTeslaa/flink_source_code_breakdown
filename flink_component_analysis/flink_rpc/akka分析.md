@@ -22,6 +22,8 @@ RpcEndpoint含义：通讯的端，即Actor。
 
 
 # FencedRpcEndpoint
+![image](https://user-images.githubusercontent.com/42859030/110249180-e00ec200-7faf-11eb-8db5-787fb2b68cfe.png)
+
 
 ## 原理背景：
 Fencing token:一种资源保护机制。（fenced：围起来的 -> 即隔离机制。）
