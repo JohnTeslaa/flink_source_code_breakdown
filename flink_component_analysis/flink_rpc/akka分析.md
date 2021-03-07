@@ -17,8 +17,7 @@ RpcEndpoint含义：通讯的端，即Actor。
 * Single Threaded Endpoint Execution：在同一个endpoint上的所有RPC调用都被主线程（main thread）完成。AKKA的单线程？？TODO
 * lifecycle：Created，start()/onstart()，执行请求，close/onStop
 
-内部类：MainThreadExecutor
-Executor which executes runnables in the main thread context.
+内部类：MainThreadExecutor，Executor which executes runnables in the main thread context。
 提供：runAsync、scheduleRunAsync、execute、schedule、scheduleAtFixedRate、scheduleWithFixedDelay等方法。
 
 
