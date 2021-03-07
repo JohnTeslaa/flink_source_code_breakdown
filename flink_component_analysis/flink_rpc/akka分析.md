@@ -18,4 +18,14 @@ https://www.cnblogs.com/lushilin/p/11239908.html
 ## FencedRpcEndpoint原理
 给RpcEndpint增加了一个fencing-token，这是一个连续增长的整数(fencing-token的本意)，FencedRpcEndpoint只处理那些**附带的fencing-token跟自己的fencing-token一样的消息**，这个功能明确地指定**让某个actor处理某个消息**。
 
-## 重要的方法
+## FencedMainThreadExecutable
+
+
+
+
+# Java 知识
+## 成员变量和方法的访问修饰符：
+private：私有，只有本类可以访问
+default：本类+同一个包
+protected：本类、同一个包+不同包的子类可以访问
+public：本类、同一个包、不同包的非子类类均可以访问
