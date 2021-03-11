@@ -115,3 +115,11 @@ private Method lookupRpcMethod(final String methodName, final Class<?>[] paramet
 
 #### LocalRpcInvocation 本地调用
 * 没有序列化操作
+
+
+# 本章Java知识 TODO
+反射的原理
+动态代理的原理
+关键方法的实现
+
+
