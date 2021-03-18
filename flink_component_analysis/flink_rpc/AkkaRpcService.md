@@ -1,3 +1,7 @@
+RpcService:用于启动和连接RpcEndpoint。
+**AkkaRpcService：基于Akka实现的RPCService服务。该服务会启动一个Akka Actor来接收来自RpcGateway的RPC调用
+**
+
 作用：启动一个Akka Actor来接收RPC调用
 ## connect:
 ## startServer:根据传入的rpcEndpoint，启动一个RpcServer。
