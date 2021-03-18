@@ -118,8 +118,8 @@ private Method lookupRpcMethod(final String methodName, final Class<?>[] paramet
 
 
 # 本章Java知识 TODO
-反射的原理
-动态代理的原理
+反射的原理：在运行时，获取Method，Field，Constructor等
+动态代理的原理：动态代理是反射的重要应用。是在运行时才知道接口的具体实现类是啥。不管运行时底层实际是什么类在执行，都可以用一个Proxy来代表这个实际执行的类。
 关键方法的实现
 
 
