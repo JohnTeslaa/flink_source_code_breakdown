@@ -1,7 +1,7 @@
-# AkkaRpcActor分析
+# AkkaRpcActor类分析
 
-# AkkaRpcActor类
-作用：Akka rpc actor which receives LocalRpcInvocation, RunAsync and CallAsync ControlMessages messages.
+## 作用
+Akka rpc actor which receives LocalRpcInvocation, RunAsync and CallAsync ControlMessages messages.
 
 The LocalRpcInvocation designates a rpc and is dispatched to the given RpcEndpoint instance.
 
@@ -9,6 +9,13 @@ The RunAsync and CallAsync messages contain executable code which is executed in
 
 The **ControlMessages message** controls the processing behaviour of the akka rpc actor. A ControlMessages#START  starts processing incoming messages. A  ControlMessages#STOP message stops processing messages. All messages which arrive when the processing is stopped, will be discarded.
 
+## AkkaRpcActor和AkkaRpcService的关系
+AkkaRpcService是一个服务。
+AkkaRpcActor是一个拥有完全RPC行为的独立个体。AkkaRpcActor需要AkkaRpcService的支撑（AkkaRpcService是AkkaRpcActor的子类）
+
+## AkkaRpcActor和AkkaEndPoint的关系
+AkkaRpcActor是AkkaEndPoint的子类，拥有比AkkaEndPoint更丰富的功能
+![img.png](img.png)
 
 ## 处理RPC消息
 三种消息类型的处理方式：

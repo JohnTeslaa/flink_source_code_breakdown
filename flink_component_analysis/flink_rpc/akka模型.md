@@ -12,3 +12,7 @@
 
 ### rpcService
 todo
+
+## Akka重要函数
+tell:异步发送一个消息并立即返回。
+ask:异步发送一条消息并返回一个 Future代表一个可能的回应

@@ -31,7 +31,7 @@ RpcServer server =
                                         new Class<?>[implementedRpcGateways.size()]),
                                 akkaInvocationHandler);
 ```
-
+生成一个RpcGateway的代理，提供RPC服务
 ## stopServer
 关闭服务器
 
