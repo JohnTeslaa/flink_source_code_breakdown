@@ -1,3 +1,12 @@
+来自官网：https://ci.apache.org/projects/flink/flink-docs-release-1.12/deployment/config.html#rpc--akka
+Flink uses Akka for RPC between components (JobManager/TaskManager/ResourceManager). Flink does not use Akka for data transport.
+
+https://flink.apache.org/2019/06/05/flink-network-stack.html
+https://zhuanlan.zhihu.com/p/70827849 中文翻译
+In contrast to the coordination channels between TaskManagers and JobManagers which are using RPCs via Akka, the network stack between TaskManagers relies on a much lower-level API using Netty.
+
+
+
 flink_rpc的整体实现流程
 待完成RPC各个组件的源码阅读后，参考这篇文章，做一个整体架构的梳理 20210313 TODO
 https://www.cnblogs.com/leesf456/p/11120045.html
