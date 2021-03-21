@@ -41,3 +41,59 @@ RPC comsumer:
 
 * 当调用非AkkaInvocationHandler实现的方法时，则进行Rpc请求。
 
+
+
+# TaskManager\ResourceManager RPC交互流程
+## TaskExecutor启动RPC服务
+TaskManagerRunner#createRpcService,需要传入外部RPC服务的ip\port
+```java
+    /**
+     * Create a RPC service for the task manager.
+     *
+     * @param configuration The configuration for the TaskManager.
+     * @param haServices to use for the task manager hostname retrieval
+     */
+    @VisibleForTesting
+    static RpcService createRpcService(
+            final Configuration configuration, final HighAvailabilityServices haServices)
+            throws Exception {
+
+        checkNotNull(configuration);
+        checkNotNull(haServices);
+
+        return AkkaRpcServiceUtils.createRemoteRpcService(
+                configuration,
+                determineTaskManagerBindAddress(configuration, haServices),
+                configuration.getString(TaskManagerOptions.RPC_PORT),
+                configuration.getString(TaskManagerOptions.BIND_HOST),
+                configuration.getOptional(TaskManagerOptions.RPC_BIND_PORT));
+    }
+```
+
+通过AkkaRpcServiceUtils.createRemoteRpcService方法来创建RPC服务。
+
+
+## ClusterEntrypoint（JobMaster）
+```java
+protected void initializeServices(Configuration configuration, PluginManager pluginManager)
+            throws Exception {
+
+        LOG.info("Initializing cluster services.");
+
+        synchronized (lock) {
+            commonRpcService =
+                    AkkaRpcServiceUtils.createRemoteRpcService(
+                            configuration,
+                            configuration.getString(JobManagerOptions.ADDRESS),
+                            getRPCPortRange(configuration),
+                            configuration.getString(JobManagerOptions.BIND_HOST),
+                            configuration.getOptional(JobManagerOptions.RPC_BIND_PORT));
+
+            JMXService.startInstance(configuration.getString(JMXServerOptions.JMX_SERVER_PORT));
+
+            // update the configuration used to create the high availability services
+            configuration.setString(JobManagerOptions.ADDRESS, commonRpcService.getAddress());
+            configuration.setInteger(JobManagerOptions.PORT, commonRpcService.getPort());
+            ......
+}
+```
