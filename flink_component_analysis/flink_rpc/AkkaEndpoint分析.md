@@ -1,12 +1,13 @@
 # 概览
-Flink采用Akka作为RPC通信的组件.二、通讯过程模块
+Flink采用Akka作为RPC通信的组件.
 
-akka 是为了通信，不适合大数据量的传输，像hadoop flink hbase 这些后面都用netty 来做节点间数据的传输
+akka 是为了通信，不适合大数据量的传输，像hadoop flink hbase 这些后面都用netty 来做节点间数据的传输（参见TaskManager之间的shuffle）
 
 从Akka与Actor模型入手，以点带面，一步步引出Flink的整体组件通信全景。对Flink中RPC框架涉及的主要类RpcGateway、RpcEndpoint、RpcService、RpcServer、AkkaRpcActor进行仔细拆解，之后通过代码的跳转详细分析了RPC的交互过程。
 
 
 # RpcGateway接口
+定义了RPC通讯的协议
 只有两个方法：getAddress() 和getHostName()
 
 
