@@ -11,7 +11,11 @@
 - Topic and Partition Discovery
 - Offset Committing Behaviour Configuration
 - Timestamp Extraction/Watermark Emission
-
+Flink Kafka Consumer 需要知道如何将 Kafka 中的二进制数据转换为 Java 或者 Scala 对象。
+https://blog.csdn.net/qq_44962429/article/details/103731379
+1、TypeInformationSerializationSchema：
+2、JsonDeserializationSchema：将序列化的Json转换为ObjectNode 对象。
+3、AvroDeserializationSchema：
 
 # Kafka producer
 - The SerializationSchema
